@@ -1,0 +1,17 @@
+<!-- moviedetails.component.html -->
+<div *ngIf="movieDetails" class="movie-details">
+  <h2>{{ movieDetails.title }}</h2>
+  <p class="release-date">Release Date: {{ movieDetails.release_date }}</p>
+  <p class="overview">{{ movieDetails.overview }}</p>
+  <button (click)="toggleFavorite()" class="favorite-button">
+    <i class="fas fa-star" [ngClass]="{ 'favorited': movieDetails.favorite }"></i>
+  </button>
+  <img src="https://image.tmdb.org/t/p/w500{{ movieDetails.poster_path }}" alt="{{ movieDetails.title }}" class="movie-poster">
+
+  <!-- Additional details -->
+  <div class="additional-details">
+    <p>Genre: {{ movieDetails.genre }}</p>
+    <p>Director: {{ movieDetails.director }}</p>
+    <!-- Add more details as needed -->
+  </div>
+</div>

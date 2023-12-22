@@ -1,0 +1,61 @@
+/* login.component.css */
+
+div {
+    max-width: 300px; /* Ajustez la largeur selon vos préférences */
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; /* Fond blanc */
+  }
+  
+  h2 {
+    text-align: center;
+    color: #e74c3c; /* Rouge foncé */
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  label {
+    margin-bottom: 8px;
+    color: #e74c3c; /* Rouge foncé */
+  }
+  
+  input {
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #e74c3c; /* Bordure rouge foncé */
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #e74c3c; /* Rouge foncé */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #c0392b; /* Rouge plus foncé au survol */
+  }
+  
+  p {
+    margin-top: 16px;
+    text-align: center;
+    color: #e74c3c; /* Rouge foncé */
+  }
+  
+  a {
+    color: #e74c3c; /* Rouge foncé */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  

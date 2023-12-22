@@ -1,0 +1,24 @@
+<!-- app.component.html
+<div *ngFor="let movie of movies">
+  <div *ngIf="movie.movieDetails">
+    <h2>{{ movie.movieDetails.title }}</h2>
+    <img *ngIf="movie.movieDetails.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie.movieDetails.poster_path" alt="{{ movie.movieDetails.title }} Poster">
+    <p>{{ movie.movieDetails.overview }}</p>
+    <p>Release Date: {{ movie.movieDetails.release_date }}</p>
+  </div>
+</div> -->
+
+<!-- app.component.html -->
+<!-- <div *ngIf="!isAuthenticated">
+    <app-login></app-login>
+  </div>
+  <div *ngIf="isAuthenticated"> -->
+    <!-- <app-navbar></app-navbar> -->
+    <!-- <app-movie></app-movie> -->
+
+    <!-- <app-login></app-login> -->
+    <router-outlet >
+    </router-outlet>
+
+  <!-- </div> -->
+  <!-- <app-footer></app-footer> -->

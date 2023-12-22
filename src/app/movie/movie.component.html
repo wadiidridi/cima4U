@@ -1,0 +1,59 @@
+<!-- movie.component.html -->
+<div id="main" ng-app>
+  <!-- The navigation menu will get the value of the "active" variable as a class.
+       The $event.preventDefault() stops the page from jumping when a link is clicked. -->
+
+<!-- movie.component.html -->
+<nav>
+  <a href="#" [class.home]="active === 'home'" (click)="changeMovieType('home')">Home</a>
+  <a href="#" [class.projects]="active === 'top_rated'" (click)="changeMovieType('top_rated')">Top Rated</a>
+  <a href="#" [class.services]="active === 'popular'" (click)="changeMovieType('popular')">Popular</a>
+  <a href="#" [class.contact]="active === 'now_playing'" (click)="changeMovieType('now_playing')">Now Playing</a>
+  <a href="#" [class.contact]="active === 'upcoming'" (click)="changeMovieType('upcoming')">Upcoming</a>
+</nav>
+
+<select [(ngModel)]="active" (change)="changeMovieType($event)">
+  <option value="top_rated">Top Rated</option>
+  <option value="popular">Popular</option>
+  <option value="now_playing">Now Playing</option>
+  <option value="upcoming">Upcoming</option>
+</select>
+
+<!-- Display the selected movie type -->
+<!-- <p>You chose <b>{{ active }}</b></p> -->
+
+
+  <!-- ng-show will show an element if the value in the quotes is truthful,
+       while ng-hide does the opposite. Because the active variable is not set
+       initially, this will cause the first paragraph to be visible. -->
+<!-- 
+  <p ng-hide="active">Please click a menu item</p>
+  <p ng-show="active">You chose <b>{{active}}</b></p>
+</div> -->
+<div class="movie-list">
+  <div *ngFor="let movie of movies" class="movie-item">
+    <!-- Utilisez [routerLink] pour créer un lien vers les détails du film -->
+    <a [routerLink]="['/movie-details', movie.movieDetails.id]">
+      <div *ngIf="movie.movieDetails">
+        <h2 class="movie-title">{{ movie.movieDetails.title }}</h2>
+        <!-- <p>{{ movie.movieDetails.release_date }}</p><br> -->
+        <img src="https://image.tmdb.org/t/p/w500{{ movie.movieDetails.poster_path }}" alt="{{ movie.movieDetails.title }}" class="movie-poster">
+        <!-- <p class="movie-overview">{{ movie.movieDetails.overview }}</p> -->
+        <!-- <p class="movie-release-date">Release Date: {{ movie.movieDetails.release_date }}</p> -->
+        <!-- Ajoutez d'autres détails que vous souhaitez afficher -->
+      
+      </div>
+    </a>
+    <!-- <div>
+      <label for="rating">Notez ce film:</label>
+      <select id="rating" [(ngModel)]="movie.rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button (click)="rateMovie(movie.movieDetails.id, movie.rating)">Noter</button>
+    </div> -->
+  </div>
+</div>
