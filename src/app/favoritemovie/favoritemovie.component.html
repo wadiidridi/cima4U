@@ -53,6 +53,7 @@
     <div *ngFor="let movie of movies ;let i = index" class="movie-item">
       <!-- Utilisez [routerLink] pour créer un lien vers les détails du film -->
     <i class="fa-solid fa-heart bouncing-heart"  (click)="toggleFavorite(movie.movieDetails.id,false)"></i>
+    <p class="movie-title"> {{ movie.movieDetails.release_date }}</p>
 
       <a [routerLink]="['/movie-details', movie.movieDetails.id]">
         <div *ngIf="movie.movieDetails">
