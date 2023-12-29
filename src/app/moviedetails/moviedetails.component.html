@@ -1,17 +1,69 @@
 <!-- moviedetails.component.html -->
-<div *ngIf="movieDetails" class="movie-details">
-  <h2>{{ movieDetails.title }}</h2>
-  <p class="release-date">Release Date: {{ movieDetails.release_date }}</p>
-  <p class="overview">{{ movieDetails.overview }}</p>
-  <button (click)="toggleFavorite()" class="favorite-button">
-    <i class="fas fa-star" [ngClass]="{ 'favorited': movieDetails.favorite }"></i>
-  </button>
-  <img src="https://image.tmdb.org/t/p/w500{{ movieDetails.poster_path }}" alt="{{ movieDetails.title }}" class="movie-poster">
 
-  <!-- Additional details -->
-  <div class="additional-details">
-    <p>Genre: {{ movieDetails.genre }}</p>
-    <p>Director: {{ movieDetails.director }}</p>
-    <!-- Add more details as needed -->
+<app-navbar></app-navbar>
+
+
+<div *ngIf="movieDetails" class="movie-details" [style.backgroundImage]="'url(https://image.tmdb.org/t/p/original' + movieDetails.backdrop_path + ')'">
+  <div class="background-icons"></div>
+
+  <div class="left-section">
+
+    <div class="poster">
+      <img src="https://image.tmdb.org/t/p/w500{{ movieDetails.poster_path }}" alt="{{ movieDetails.title }}" class="movie-poster" >
+    </div>
+    <div *ngIf="video && video.length > 0" class="video-section">
+      <h3>Videos</h3>
+      <!-- <div *ngFor="let v of video"> -->
+        <div class="video" >
+        <iframe width="180%" height="400px" [src]="getVideoUrl(video[0].key)" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>          </div>
+    </div>
   </div>
+  <div class="right-section">
+    <div class="content">
+      
+      <div class="header">
+        <h2>{{ movieDetails.title }} <i class="fas fa-film"></i></h2>
+        <p class="release-date"><i class="far fa-calendar-alt"></i> Release Date: {{ movieDetails.release_date }}</p>
+      </div>
+      <div class="overview">
+        <h3>Overview</h3>
+        <p>{{ movieDetails.overview }}</p>
+      </div><br>
+      <i *ngIf="isfavorite===true"(click)="toggleFavorite(false)" class="fa-solid fa-heart"></i>
+      <i *ngIf="!isfavorite"(click)="toggleFavorite(true)" class="fa-regular fa-heart"></i>
+<br><br>    
+      <div class="additional-details">
+    
+        <!-- <h3><i class="fas fa-info-circle"></i> Additional Details</h3> -->
+        <!-- <p><i class="fas fa-film"></i> Genre: {{ movieDetails.genre }}</p>
+        <p><i class="fas fa-user"></i> Director: {{ movieDetails.director }}</p> -->
+        <!-- Add more details as needed -->
+      </div>
+<!-- moviedetails.component.html -->
+ 
+  <!-- Utilisez une condition pour afficher le texte approprié -->
+  <!-- {{ movieDetails.favorite ? 'Remove from Favorites' : 'Add to Favorites' }} -->
+
+      
+    </div>
+
+    <!-- Comments Section -->
+<!-- Comments Section -->
+<div *ngFor="let review of reviews" class="comment">
+  <div class="user-info">
+    <img [src]="'https://www.themoviedb.org/t/p/w500/' + review.author_details.avatar_path" alt="Author Avatar" class="user-image">
+    <div class="user-details">
+      <span class="username">{{ review.author }}</span>
+      <span class="date">{{ review.created_at  }}</span>
+      <span class="rating">{{ review.rating }}/10</span>
+    </div>
+  </div>
+  <div class="comment-text">
+    <p>{{ review.content }}</p>
+  </div>
+  <hr>
+</div>
+
+  </div>
+
 </div>

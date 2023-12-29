@@ -3,21 +3,58 @@
   <!-- The navigation menu will get the value of the "active" variable as a class.
        The $event.preventDefault() stops the page from jumping when a link is clicked. -->
 
+      
+
+
+<!-- movie.component.html -->
+
+
+
+
+<!-- movie.component.html -->
 <!-- movie.component.html -->
 <nav>
-  <a href="#" [class.home]="active === 'home'" (click)="changeMovieType('home')">Home</a>
-  <a href="#" [class.projects]="active === 'top_rated'" (click)="changeMovieType('top_rated')">Top Rated</a>
-  <a href="#" [class.services]="active === 'popular'" (click)="changeMovieType('popular')">Popular</a>
-  <a href="#" [class.contact]="active === 'now_playing'" (click)="changeMovieType('now_playing')">Now Playing</a>
-  <a href="#" [class.contact]="active === 'upcoming'" (click)="changeMovieType('upcoming')">Upcoming</a>
+  <!-- <a routerLink="/movie">Popular</a> -->
+  <img src=".\assets\logo.png"   routerLink="/popular" alt="" class="logo">
+  <a routerLink="/popular" [class.services]="active === 'popular'" (click)="changeMovieType('popular')">Popular</a>
+
+  <a routerLink="/top_rated" [class.projects]="active === 'top_rated'" (click)="changeMovieType('top_rated')">Top Rated</a>
+  <!-- <a routerLink="/popular" [class.services]="active === 'popular'" (click)="changeMovieType('popular')">Popular</a> -->
+  <!-- <a routerLink="/now_playing" [class.contact]="active === 'now_playing'" (click)="changeMovieType('now_playing')">Now Playing</a> -->
+
+  <!-- <div class="search-container">
+    <input type="text" placeholder="Search by title..." (keyup)="onSearchInput($event)" />
+  </div> -->
+
+  
+  <a routerLink="/upcoming" [class.contact]="active === 'upcoming'" (click)="changeMovieType('upcoming')">Upcoming</a>
+  <div class="user-menu">
+      <!-- <a routerLink="/favoritemovies">favorite</a> -->
+      <div class="search-container">
+        <input type="text" placeholder="Search by title..." (keyup)="onSearchInput($event)" />
+      </div>
+    <div class="profile-link">
+      <i class="fa-solid fa-user"></i>
+      <div class="sub-menu">
+        <a routerLink="/favoritemovies"><i class="fas fa-heart" style="font-size: 1rem;">&#160;&#160;Favorite</i> </a>
+        <a routerLink="/login">     <i class="fas fa-sign-out-alt">&#160;&#160;Deconnexion</i> 
+        </a>
+      </div>
+    </div>
+    
+  </div>
 </nav>
 
-<select [(ngModel)]="active" (change)="changeMovieType($event)">
+<hr style="border: solid; color: rgb(29, 143, 236);">
+
+
+
+<!-- <select [(ngModel)]="active" (change)="changeMovieType($event)">
   <option value="top_rated">Top Rated</option>
   <option value="popular">Popular</option>
   <option value="now_playing">Now Playing</option>
   <option value="upcoming">Upcoming</option>
-</select>
+</select> -->
 
 <!-- Display the selected movie type -->
 <!-- <p>You chose <b>{{ active }}</b></p> -->
@@ -31,17 +68,32 @@
   <p ng-show="active">You chose <b>{{active}}</b></p>
 </div> -->
 <div class="movie-list">
-  <div *ngFor="let movie of movies" class="movie-item">
+  <div *ngFor="let movie of movies | search:searchTitle" class="movie-item">
+
+    <i class="fa-regular fa-heart bouncing-heart" *ngIf="!isfavorite.includes(movie.movieDetails.id)" (click)="toggleFavorite(movie.movieDetails.id,true)"></i>
+    <i class="fa-solid fa-heart bouncing-heart" *ngIf="isfavorite.includes(movie.movieDetails.id)" (click)="toggleFavorite(movie.movieDetails.id,false)"></i>
+    <p class="movie-title"> {{ movie.movieDetails.release_date }}</p>
+
     <!-- Utilisez [routerLink] pour créer un lien vers les détails du film -->
     <a [routerLink]="['/movie-details', movie.movieDetails.id]">
       <div *ngIf="movie.movieDetails">
-        <h2 class="movie-title">{{ movie.movieDetails.title }}</h2>
         <!-- <p>{{ movie.movieDetails.release_date }}</p><br> -->
         <img src="https://image.tmdb.org/t/p/w500{{ movie.movieDetails.poster_path }}" alt="{{ movie.movieDetails.title }}" class="movie-poster">
         <!-- <p class="movie-overview">{{ movie.movieDetails.overview }}</p> -->
         <!-- <p class="movie-release-date">Release Date: {{ movie.movieDetails.release_date }}</p> -->
         <!-- Ajoutez d'autres détails que vous souhaitez afficher -->
       
+      </div>
+      <br>
+      <h2 class="movie-title">{{ movie.movieDetails.title }}</h2>
+
+    
+      <div class="rating">
+        <i class="fas fa-star" [ngClass]="{ 'rated': movie.rating >= 1 }"></i>
+        <i class="fas fa-star" [ngClass]="{ 'rated': movie.rating >= 2 }"></i>
+        <i class="fas fa-star" [ngClass]="{ 'rated': movie.rating >= 3 }"></i>
+        <i class="fas fa-star" [ngClass]="{ 'rated': movie.rating >= 4 }"></i>
+        <i class="fas fa-star" [ngClass]="{ 'rated': movie.rating === 5 }"></i>
       </div>
     </a>
     <!-- <div>

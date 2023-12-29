@@ -15,6 +15,7 @@ import { FooterComponent } from './footer/footer.component';
 import { MoviedetailsComponent } from './moviedetails/moviedetails.component';
 import { HomeComponent } from './home/home.component';
 import { FavoritemovieComponent } from './favoritemovie/favoritemovie.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,19 @@ import { FavoritemovieComponent } from './favoritemovie/favoritemovie.component'
     FooterComponent,
     MoviedetailsComponent,
     HomeComponent,
-    FavoritemovieComponent
+    FavoritemovieComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    
     FormsModule, // Ajoutez cela à la liste des imports
     ToastrModule.forRoot(),
+    
+
+
 
 
   ],

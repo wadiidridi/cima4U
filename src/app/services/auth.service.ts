@@ -47,7 +47,6 @@ export class AuthService {
       api_key: this.env.api_key,
       session_id: sessionId,
     };
- 
     return this.http.get(url, { params });
   }  
 

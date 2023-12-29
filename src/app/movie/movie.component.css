@@ -1,161 +1,218 @@
 /* movie.component.css */
-/* Style pour la liste de films */
-.movie-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    background-color: #0b0c0c;
-  }
-  
-  /* Style pour chaque film dans la liste */
-  .movie-item {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    margin: 10px;
-    padding: 15px;
-    width: 300px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Style pour le titre du film */
-  .movie-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Style pour l'image du film */
-  .movie-poster {
-    width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style pour la description du film */
-  .movie-overview {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-  
-  /* Style pour la date de sortie du film */
-  .movie-release-date {
-    font-size: 12px;
-    color: #888;
-  }
-  *{
-    margin:0;
-    padding:0;
-}
 
-body{
-    font:15px/1.3 'Open Sans', sans-serif;
-    color: #5e5b64;
-    text-align:center;
+body {
+  font: 15px/1.3 'Open Sans', sans-serif;
+  color: #5e5b64;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  
 }
 
 a, a:visited {
-    outline:none;
-    color:#389dc1;
+  outline: none;
+  color: #389dc1;
 }
 
-a:hover{
-    text-decoration:none;
+a:hover {
+  text-decoration: none;
 }
 
-section, footer, header, aside, nav{
-    display: block;
+section, footer, header, aside, nav {
+  display: block;
 }
 
-/*-------------------------
-    The menu
---------------------------*/
-
-nav{
-    display:inline-block;
-    /* margin: 60px auto 45px; */
-    background-color:#0b0c0c;
-    box-shadow:0 1px 1px #ccc;
-    border-radius:2px;
-    width: 100%;
-    margin-top: 0rem;
-    /* justify-content: space-between; */
+/* Navbar Styles */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b0c0c;
+  box-shadow: 0 1px 1px #ccc;
+  border-radius: 2px;
+  width: 100%;
+  padding: 10px;
 }
 
-nav a{
-    display:inline-block;
-    padding: 18px 30px;
-    color:#dd1010 !important;
-    font-weight:bold;
-    font-size:16px;
-    text-decoration:none;
-    line-height:3;
-    text-transform: uppercase;
-    background-color:transparent;
-
-    -webkit-transition:background-color 0.25s;
-    -moz-transition:background-color 0.25s;
-    transition:background-color 0.25s;
+nav a {
+  display: inline-block;
+  padding: 15px 20px;
+  color: #f7f7f7 !important;
+  font-weight: bold;
+  font-size: 16px;
+  text-decoration: none;
+  line-height: 3;
+  /* text-transform: uppercase; */
+  background-color: transparent;
+  transition: background-color 0.25s;
 }
 
-nav a:first-child{
-    border-radius:2px 0 0 2px;
+nav a:first-child {
+  border-radius: 2px 0 0 2px;
 }
 
-nav a:last-child{
-    border-radius:0 2px 2px 0;
+nav a:last-child {
+  border-radius: 0 2px 2px 0;
 }
 
 nav.home .home,
 nav.projects .projects,
 nav.services .services,
-nav.contact .contact{
-    background-color:#e35885;
+nav.contact .contact {
+  background-color: #e35885;
 }
 
-p{
-    font-size:22px;
-    font-weight:bold;
-    color:#7d9098;
+/* User Menu Styles */
+.user-menu {
+  display: flex;
+  align-items: center;
 }
 
-p b{
-    color:#ffffff;
-    display:inline-block;
-    padding:5px 10px;
-    background-color:#c4d7e0;
-    border-radius:2px;
-    text-transform:uppercase;
-    font-size:18px;
+.user-menu .profile-link {
+  display: inline-block;
+  padding: 15px 20px;
+  color: #fff;
+  font-size: 16px;
+  text-decoration: none;
+  line-height: 1.5;
+  /* text-transform: uppercase; */
+  transition: background-color 0.25s;
+  cursor: pointer;
+  margin-right: 8rem; /* Adjust this value as needed */
 }
-/* Style de base pour le select */
-select {
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    cursor: pointer;
-  }
-  
-  /* Style au survol */
-  select:hover {
-    border-color: #888;
-  }
-  
-  /* Style au focus */
-  select:focus {
-    border-color: #555;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Style pour les options */
-  option {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  /* Style pour les options au survol */
-  option:hover {
-    background-color: #f0f0f0;
-  }
-  
+
+.user-menu .profile-link:hover {
+  background-color: #555;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  width: 20rem;
+  right: 0.5rem;
+  width: 13rem;
+  margin-top: 1rem;
+}
+
+.user-menu:hover .sub-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.sub-menu a {
+  padding: 10px 20px;
+  color: #d62424 !important;
+  text-decoration: none;
+  transition: background-color 0.25s;
+  text-transform: lowercase !important;
+
+}
+
+.sub-menu a:hover {
+  background-color: #1a95bb;
+}
+
+/* Movie List Styles */
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background-color: #0b0c0c;
+  /* padding: 20px; */
+}
+
+/* Movie Item Styles */
+.movie-item {
+  border: 1px solid #389dc1;
+  border-radius: 8px;
+  margin: 10px;
+  padding: 15px;
+  width: 15%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color:rgb(26, 26, 26);
+}
+
+/* Movie Title Styles */
+.movie-title {
+  font-size: 12px;
+  margin-bottom: 10px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+.movie-title:hover{
+  text-decoration: none;
+  color: #389dc1;
+
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+
+} 
+
+/* Movie Poster Styles */
+.movie-poster {
+  width: 81%;
+  border-radius: 8px;
+  margin-left: 1.2rem;
+  margin-top: 0.4rem;
+  /* margin-bottom: 10px; */
+}
+.movie-poster:hover  {
+  color: #ddcece;
+  transform: scale(1.1);
+  transition: transform 0.4s ease-in-out;
+
+}
+
+.rating {
+  color: #f39c12; /* Couleur des étoiles */
+  font-size: 20px; /* Taille des étoiles */
+  margin-left: 2.6rem;
+}
+
+.rating i {
+  margin-right: 5px; /* Espacement entre les étoiles */
+}
+
+/* Style pour les étoiles évaluées */
+.rating .rated {
+  color: #ffd700; /* Couleur des étoiles évaluées */
+}
+.fa-heart{
+  font-size: 2rem;
+    color: #f00606;
+
+}
+.logo{
+  width: 10%;
+  height: 100px;
+  margin-left: 1rem;
+}
+.fa-solid{
+  font-size: 2rem;
+}
+/* Add this to your styles.css or your component-specific style file */
+
+.search-container {
+  margin-top: 10px; /* Adjust as needed */
+}
+
+.search-container input {
+  padding: 8px;
+  width: 200px; /* Adjust as needed */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.search-container input:focus {
+  outline: none;
+  border-color: #007bff; /* Adjust the color as needed */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adjust the shadow as needed */
+}

@@ -1,11 +1,7 @@
-<!-- Adding the ng-app declaration to initialize AngularJS -->
-<div id="main" ng-app>
-    <!-- The navigation menu will get the value of the "active" variable as a class.
-         The $event.preventDefault() stops the page from jumping when a link is clicked. -->
-
+<!-- <div id="main" ng-app>
+    
          <nav [ngClass]="{ 'home': active === 'home', 'projects': active === 'projects', 'services': active === 'services', 'contact': active === 'contact' }" (click)="$event.preventDefault()">
 
-        <!-- When a link in the menu is clicked, we set the active variable -->
 
         <a href="#" class="home" ng-click="active='home'">Home</a>
         <a href="#" class="projects" ng-click="active='projects'">Projects</a>
@@ -13,10 +9,44 @@
         <a href="#" class="contact" ng-click="active='contact'">Contact</a>
     </nav>
 
-    <!-- ng-show will show an element if the value in the quotes is truthful,
-         while ng-hide does the opposite. Because the active variable is not set
-         initially, this will cause the first paragraph to be visible. -->
-
+   
     <p ng-hide="active">Please click a menu item</p>
     <p ng-show="active">You chose <b>{{active}}</b></p>
-</div>
+</div> -->
+
+<nav>
+    <a routerLink="/movie" style="font-size: 1.7rem;">Home</a>
+    <!-- <i class="fa-solid fa-user" style="color: red !important;">ddd</i> -->
+
+    <div class="user-menu">
+      <!-- <a routerLink="/favoritemovies">favorite</a> -->
+
+      <div class="profile-link">
+        <a routerLink="/login">     <i class="fas fa-sign-out-alt">&#160;&#160;Logout</i> 
+        </a>        <div class="sub-menu">
+         
+        </div>
+      </div>
+    
+  </div>
+    <!-- <a routerLink="/top_rated" [class.projects]="active === 'top_rated'" (click)="changeMovieType('top_rated')">Top Rated</a>
+    <a routerLink="/popular" [class.services]="active === 'popular'" (click)="changeMovieType('popular')">Popular</a> -->
+    <!-- <a routerLink="/now_playing" [class.contact]="active === 'now_playing'" (click)="changeMovieType('now_playing')">Now Playing</a> -->
+    <!-- <a routerLink="/favoritemovies">favorite</a> -->
+  
+    <!-- <div class="search-container">
+      <input type="text" placeholder="Search by title..." (keyup)="onSearchInput($event)" />
+    </div> -->
+  
+    <!-- <a routerLink="/upcoming" [class.contact]="active === 'upcoming'" (click)="changeMovieType('upcoming')">Upcoming</a>
+    <div class="user-menu">
+      <div class="profile-link">
+        Profile
+        <div class="sub-menu">
+          <a routerLink="/favorites">Favorites</a>
+          <a (click)="logout()">Déconnexion</a>
+        </div>
+      </div>
+    </div> -->
+  </nav>
+  
