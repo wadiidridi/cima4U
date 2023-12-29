@@ -172,7 +172,8 @@ nav.contact .contact {
 .rating {
   color: #f39c12; /* Couleur des étoiles */
   font-size: 20px; /* Taille des étoiles */
-  margin-left: 2.6rem;
+  /* margin-left: 4rem; */
+  text-align: center;
 }
 
 .rating i {
